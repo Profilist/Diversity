@@ -154,9 +154,11 @@ else:
             pdf.cell(200, 10, txt="Inclusivity Report", ln=True, align='C')
             pdf.ln(10)
             pdf.set_font('Arial', '', 12)
-            pdf.multi_cell(200, 10, txt=report_text)
+            
+            report_text_utf8 = report_text.encode('latin1', 'replace').decode('latin1')
+            pdf.multi_cell(200, 10, txt=report_text_utf8)
 
-            pdf_output = pdf.output(dest='S').encode('latin1')  
+            pdf_output = pdf.output(dest='S').encode('latin1', 'replace')  
             buffer.write(pdf_output)
 
             st.download_button(
