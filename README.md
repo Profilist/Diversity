@@ -1,13 +1,13 @@
-# 🔍 Inclusivity Among Us
+# 🌎 Inclusivity Among Us
 
-A **Streamlit** app designed to help communities embrace diversity and inclusivity. This tool analyzes text and provides actionable suggestions to ensure that the language used is inclusive, addressing important topics like race, gender expression, disability, and educational attainment. The app highlights non-inclusive phrases, rates the inclusivity of the content, and offers detailed feedback on how to make the communication more aligned with diversity standards.
+A **Streamlit** app designed to help communities embrace diversity and inclusivity. This tool analyzes text and provides actionable suggestions to ensure that the language used is inclusive, addressing important topics like race, gender expression, disability, and educational attainment. 
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://inclusivity-among-us.streamlit.app/)
 
 ## Features
 
-- **Inclusivity Rating**: Analyze any type of community-related content (policies, announcements, or communication) and receive a rating out of 100 to gauge how inclusive it is.
-- **Detailed Feedback**: Provides concrete suggestions on how to improve the inclusivity of language, touching on areas such as race, gender expression, disability, and educational attainment.
+- **Inclusivity Rating**: Analyze text and rates its inclusivity out of 100.
+- **Detailed Feedback**: Provides concrete suggestions on how to improve the inclusivity of language.
 - **Highlight Problematic Text**: Automatically highlights non-inclusive language in dark red, making it easy to visualize where improvements can be made.
 - **Multilingual Support**: Analyze text in multiple languages such as English, French, German, Chinese, and more.
 - **Export to PDF**: Download the inclusivity report, including ratings and feedback, as a PDF.

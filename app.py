@@ -50,7 +50,7 @@ else:
 
     if st.button("Check for Inclusivity"):
         if text_input:
-            st.write("#### Inclusivity Rating:")
+            st.write("#### 📈 Inclusivity Rating:")
             fig, ax = plt.subplots()
 
             promptRating = (
@@ -86,7 +86,7 @@ else:
             fig.patch.set_facecolor('#0e1118')
             st.pyplot(fig)
 
-            st.write("#### Tips:")
+            st.write("#### 💡 Tips:")
             prompt = (
                 f"Analyze the following corporate communication in {selected_language} for non-inclusive language "
                 f"and provide specific tips for making it more inclusive and professional. "
@@ -123,7 +123,7 @@ else:
             st.write(response_text)
             
 
-            st.write("### Specific Changes:")
+            st.write("### 🔧 Specific Changes:")
             
             def extract_flagged_words(response_text):
                 flagged_words = []
@@ -145,6 +145,8 @@ else:
             highlighted_text = highlight_text(text_input, flagged_words)
             
             st.markdown(highlighted_text, unsafe_allow_html=True)
+            
+            st.image("image.png", width=400)
             
     if st.session_state.rating_before and st.session_state.response_text:
         if st.button('Export Report to PDF'):
