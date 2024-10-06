@@ -11,9 +11,12 @@ st.set_page_config(
 
 st.title("Inclusivity Among Us")
 st.write(
-    "Ensure your corporate communication aligns with diversity and inclusivity standards. "
-    "Paste your text below to get suggestions on how to make it more inclusive!"
+    "### 🌎 Ensure your community content aligns with diversity and inclusivity standards. "
 )
+st.write(
+    "This tool helps you find ways to make your language more inclusive, touching on important topics such as 🤝 race, ⚧️ gender expression, ♿ disability, and ♿ educational attainment. "
+)
+st.write("📝 Paste your text below to get suggestions on how to make it more inclusive!")
 
 if "rating_before" not in st.session_state:
     st.session_state.rating_before = None
@@ -42,8 +45,8 @@ else:
     selected_language = st.selectbox("Select language", options=list(languages.keys()))
     language_code = languages[selected_language]
 
-    st.write("### Paste your corporate communication here:")
-    text_input = st.text_area("Enter your text", height=200)
+    st.write("### Paste your content here:")
+    text_input = st.text_area("", height=200)
 
     if st.button("Check for Inclusivity"):
         if text_input:
@@ -51,11 +54,12 @@ else:
             fig, ax = plt.subplots()
 
             promptRating = (
-                f"Analyze the following corporate communication for inclusivity and provide a rating out of 100, "
-                f"where 100 indicates the highest level of inclusivity. Focus only on significant inclusivity issues "
+                f"Analyze the following communication for inclusivity and provide a rating out of 100. "
+                f"100 indicates the highest level of inclusivity. Focus only on significant inclusivity issues "
                 f"and avoid nitpicking trivial or stylistic word choices. The analysis should be done in {selected_language}. "
                 f"If the text is largely inclusive (above 90%), avoid lowering the rating unless there are clear exclusionary elements or biases. "
-                f"The output should not include anything other than a single integer value, like 90, without decimal points.\n\n"
+                f"The output should ONLY include a single integer value, like '70', without any additional text or explanation. "
+                f"Respond with only the number.\n\n"
                 f"Text in {selected_language}:\n{text_input}"
             )
 
@@ -108,7 +112,7 @@ else:
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.5, 
-                max_tokens=300,  
+                max_tokens=800,  
                 stream=True,
             )
             
