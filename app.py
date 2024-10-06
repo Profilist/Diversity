@@ -3,6 +3,7 @@ from openai import OpenAI
 import matplotlib.pyplot as plt
 from fpdf import FPDF
 import io 
+import re
 
 st.set_page_config(
     page_title="Inclusivity Among Us",
@@ -118,6 +119,29 @@ else:
             st.write(response_text)
             
 
+            st.write("### Specific Changes:")
+            
+            def extract_flagged_words(response_text):
+                flagged_words = []
+                tips = re.findall(r'Example: "(.*?)"', response_text)
+                for tip in tips:
+                    flagged_words.append(tip)
+                return flagged_words
+
+            flagged_words = extract_flagged_words(st.session_state.response_text)
+            
+            def highlight_text(original_text, flagged_words):
+                color = '#8B0000' 
+
+                for word in flagged_words:
+                    original_text = re.sub(f"({word})", rf'<span style="background-color:{color};">\1</span>', original_text, flags=re.IGNORECASE)
+
+                return original_text
+
+            highlighted_text = highlight_text(text_input, flagged_words)
+            
+            st.markdown(highlighted_text, unsafe_allow_html=True)
+            
     if st.session_state.rating_before and st.session_state.response_text:
         if st.button('Export Report to PDF'):
             report_text = f"Inclusivity Rating: {st.session_state.rating_before}\n\n" + st.session_state.response_text
